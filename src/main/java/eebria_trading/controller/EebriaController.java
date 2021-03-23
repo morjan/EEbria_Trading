@@ -13,35 +13,32 @@ public class EebriaController {
     @Autowired
     DataService dataService;
 
-    @GetMapping(value = "/getAllProducts", produces = "application/json")
+    @GetMapping(value = "/products", produces = "application/json")
     public List<Drink> getAllProducts() {
-
-        System.out.println("this is git test");
-
         return dataService.getAllProducts();
     }
 
-    @GetMapping(value = "/getAllProductsByType", produces = "application/json")
+    @GetMapping(value = "/productsByType", produces = "application/json")
     public List<Drink> getAllProductsByType() {
         return dataService.getProductsByType("cider");
     }
 
-    @GetMapping(value = "/getCheaperProduct", produces = "application/json")
+    @GetMapping(value = "/cheaperProduct", produces = "application/json")
     public Drink getCheaperProduct() {
         return dataService.getCheaperProduct();
     }
 
-    @GetMapping(value = "getExpensiveProduct", produces = "application/json")
+    @GetMapping(value = "/expensiveProduct", produces = "application/json")
     public Drink getExpensiveProduct() {
         return dataService.getExpensiveProduct();
     }
 
-    @GetMapping(value = "sortProductsByPriceAscending", produces = "application/json")
+    @GetMapping(value = "/sortProductsByPriceAscending", produces = "application/json")
     public List<Drink> sortProductsByPriceAscending() {
         return dataService.sortProductsByPriceAscending();
     }
 
-    @GetMapping(value = "sortProductsByPriceDescending", produces = "application/json")
+    @GetMapping(value = "/sortProductsByPriceDescending", produces = "application/json")
     public List<Drink> sortProductsByPriceDescending() {
         return dataService.sortProductsByPriceDescending();
     }
