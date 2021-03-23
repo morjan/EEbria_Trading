@@ -15,6 +15,9 @@ public class EebriaController {
 
     @GetMapping(value = "/getAllProducts", produces = "application/json")
     public List<Drink> getAllProducts() {
+
+        System.out.println("this is git test");
+
         return dataService.getAllProducts();
     }
 
