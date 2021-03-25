@@ -25,6 +25,13 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
+    public List<Drink> getProductsByIds(List<Long> drinkIds) {
+        return drinkList.stream()
+                .filter(drink -> drinkIds.contains(drink.getId()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Drink> getProductsByType(String type) {
         return drinkList
                 .stream()
@@ -32,48 +39,48 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
-    public Drink getCheaperProduct() {
-        return drinkList
+    public Drink getCheaperProduct(List<Drink> drinks) {
+        return drinks
                 .stream()
                 .min(Comparator.comparing(Drink::getPrice))
                 .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
-    public Drink getExpensiveProduct() {
-        return drinkList
+    public Drink getExpensiveProduct(List<Drink> drinks) {
+        return drinks
                 .stream()
                 .max(Comparator.comparing(Drink::getPrice))
                 .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
-    public List<Drink> sortProductsByPriceAscending() {
-        return drinkList
+    public List<Drink> sortProductsByPriceAscending(List<Drink> drinks) {
+        return drinks
                 .stream()
                 .sorted(Comparator.comparing(Drink::getPrice))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Drink> sortProductsByPriceDescending() {
-        return drinkList
+    public List<Drink> sortProductsByPriceDescending(List<Drink> drinks) {
+        return drinks
                 .stream()
                 .sorted(Comparator.comparing(Drink::getPrice).reversed())
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Drink> sortProductsByNameAscending() {
-        return drinkList
+    public List<Drink> sortProductsByNameAscending(List<Drink> drinks) {
+        return drinks
                 .stream()
                 .sorted(Comparator.comparing(Drink::getName))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Drink> sortProductsByNameDescending() {
-        return drinkList
+    public List<Drink> sortProductsByNameDescending(List<Drink> drinks) {
+        return drinks
                 .stream()
                 .sorted(Comparator.comparing(Drink::getName).reversed())
                 .collect(Collectors.toList());

@@ -38,11 +38,16 @@ public class APIServiceImpl implements APIService {
     public List<Drink> mapDrinkLIst(List<Map> drinkMapList) {
         List<Drink> drinkList = new ArrayList<>();
 
-        drinkMapList.forEach(drink -> drinkList
-                .add(new Drink((String)drink.get("name"),
-                        (String) drink.get("image"),
-                        DrinkType.valueOf((String) drink.get("style")),
-                        (Double) drink.get("price"))));
+        for(int index = 0; index < drinkMapList.size(); index++) {
+            Map drink = drinkMapList.get(index);
+
+            drinkList.add(
+                    new Drink(index,
+                            (String)drink.get("name"),
+                            (String) drink.get("image"),
+                            DrinkType.valueOf((String) drink.get("style")),
+                            (Double) drink.get("price")));
+        }
 
         return drinkList;
     }

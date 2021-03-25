@@ -25,32 +25,38 @@ public class EebriaController {
     }
 
     @GetMapping(value = "/cheaperProduct", produces = "application/json")
-    public Drink getCheaperProduct() {
-        return dataService.getCheaperProduct();
+    public Drink getCheaperProduct(@RequestParam List<Long> drinksId) {
+        List<Drink> drinks = dataService.getProductsByIds(drinksId);
+        return dataService.getCheaperProduct(drinks);
     }
 
     @GetMapping(value = "/expensiveProduct", produces = "application/json")
-    public Drink getExpensiveProduct() {
-        return dataService.getExpensiveProduct();
+    public Drink getExpensiveProduct(@RequestParam List<Long> drinksId) {
+        List<Drink> drinks = dataService.getProductsByIds(drinksId);
+        return dataService.getExpensiveProduct(drinks);
     }
 
-    @GetMapping(value = "/sortProductsByPriceAscending", produces = "application/json")
-    public List<Drink> sortProductsByPriceAscending() {
-        return dataService.sortProductsByPriceAscending();
+        @GetMapping(value = "/sortProductsByPriceAscending", produces = "application/json")
+    public List<Drink> sortProductsByPriceAscending(@RequestParam List<Long> drinksId) {
+        List<Drink> drinks = dataService.getProductsByIds(drinksId);
+        return dataService.sortProductsByPriceAscending(drinks);
     }
 
     @GetMapping(value = "/sortProductsByPriceDescending", produces = "application/json")
-    public List<Drink> sortProductsByPriceDescending() {
-        return dataService.sortProductsByPriceDescending();
+    public List<Drink> sortProductsByPriceDescending(@RequestParam List<Long> drinksId) {
+        List<Drink> drinks = dataService.getProductsByIds(drinksId);
+        return dataService.sortProductsByPriceDescending(drinks);
     }
 
     @GetMapping(value = "sortProductsByNameAscending", produces = "application/json")
-    public List<Drink> sortProductsByNameAscending() {
-        return dataService.sortProductsByNameAscending();
+    public List<Drink> sortProductsByNameAscending(@RequestParam List<Long> drinksId) {
+        List<Drink> drinks = dataService.getProductsByIds(drinksId);
+        return dataService.sortProductsByNameAscending(drinks);
     }
 
     @GetMapping(value = "sortProductsByNameDescending", produces = "application/json")
-    public List<Drink> sortProductsByNameDescending() {
-        return dataService.sortProductsByNameDescending();
+    public List<Drink> sortProductsByNameDescending(@RequestParam List<Long> drinksId) {
+        List<Drink> drinks = dataService.getProductsByIds(drinksId);
+        return dataService.sortProductsByNameDescending(drinks);
     }
 }
