@@ -4,6 +4,7 @@ import eebria_trading.entity.Drink;
 import eebria_trading.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,8 +20,8 @@ public class EebriaController {
     }
 
     @GetMapping(value = "/productsByType", produces = "application/json")
-    public List<Drink> getAllProductsByType() {
-        return dataService.getProductsByType("cider");
+    public List<Drink> getAllProductsByType(@RequestParam String productType) {
+        return dataService.getProductsByType(productType);
     }
 
     @GetMapping(value = "/cheaperProduct", produces = "application/json")
